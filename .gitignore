@@ -3,3 +3,5 @@
 american_stories_models/
 scans/
 outputs/
+__pycache__/
+*.pyc
