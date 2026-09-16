@@ -20,7 +20,7 @@ from PIL import Image, ImageDraw
 import cv2
 import gc
 import psutil
-import pkg_resources
+from importlib.resources import files as resource_files
 from torchvision.ops import nms
 from torchvision import transforms
 import random

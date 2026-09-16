@@ -1,6 +1,6 @@
 import re
 import string
-import pkg_resources
+from importlib.resources import files as resource_files
 from symspellpy import SymSpell
 from nltk.metrics.distance import edit_distance
 import string
@@ -18,7 +18,7 @@ def create_common_abbrev():
 
 def create_worddict():
     sym_spell = SymSpell()
-    dictionary_path = pkg_resources.resource_filename("symspellpy", "frequency_dictionary_en_82_765.txt")
+    dictionary_path = str(resource_files("symspellpy") / "frequency_dictionary_en_82_765.txt")
     sym_spell.load_dictionary(dictionary_path, 0, 1)
     abbrevs = [depunctuate(a) for a in create_common_abbrev()]
     worddict = sym_spell.words
