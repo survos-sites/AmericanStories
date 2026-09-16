@@ -726,7 +726,7 @@ def main(args):
 
         # convert the inference results to COCO format
         if os.path.isdir(manifest_path):
-            with open(os.path.join(output_save_path, os.path.basename(filenames[f_idx]).replace('jp2', 'json').replace('pdf', 'json')), 'w') as f:
+            with open(os.path.join(output_save_path, os.path.splitext(os.path.basename(filenames[f_idx]))[0] + '.json'), 'w') as f:
                 json.dump(metadata, f, indent=2)
         else:
             with open(os.path.join(output_save_path, "{}.json".format('_'.join(filenames[f_idx].strip()[:-4].split('/')[-4:]))), "w") as f:

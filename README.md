@@ -80,3 +80,15 @@ pip install pikepdf
 4. Run `process_scans.sh`, scan output will be saved in an `output` folder. 
 
 
+
+
+## Running on current libraries (survos-sites fork)
+
+```bash
+uv sync
+OMP_NUM_THREADS=1 uv run python src/run_img2txt_yolo_pipeline.py --manifest_path <dir of jpg/png/jp2> ...
+```
+
+`OMP_NUM_THREADS=1` is required on macOS: torch and faiss each bring an OpenMP runtime, and the
+word-recognizer's faiss search segfaults when both are active. Output is one `<scan>.json` per input
+image, whatever its extension.
